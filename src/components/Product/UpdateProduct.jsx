@@ -7,7 +7,7 @@ const UpdateProduct = () => {
     const handleUpdate = async () => {
         const token = localStorage.getItem('token');
         try {
-            await fetch(`http://localhost:5000/api/product/update/${id}`, {
+            await fetch(`https://localhost:7080/api/product/update/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

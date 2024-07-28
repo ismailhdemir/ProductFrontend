@@ -6,7 +6,7 @@ const DeleteProduct = () => {
     const handleDelete = async () => {
         const token = localStorage.getItem('token');
         try {
-            await fetch(`http://localhost:5000/api/product/delete/${productId}`, {
+            await fetch(`https://localhost:7080/api/product/delete/${productId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`,

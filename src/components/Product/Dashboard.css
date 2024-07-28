@@ -1,0 +1,64 @@
+/* Genel Dashboard Container Ayarları */
+.dashboard-container {
+  background-color: #f4f4f9; /* Arka plan rengi */
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Başlık Alanı */
+.dashboard-header {
+  background-color: #6200ea; /* Üst başlık rengi */
+  color: white;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  border-radius: 8px 8px 0 0;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* İçerik Alanı */
+.dashboard-content {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: white; /* İçerik arka plan rengi */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* İçerik Bölümleri */
+.dashboard-content > div {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #e0e0e0; /* İçerik bölümü kenar çizgisi */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* İçerik Başlıkları */
+.dashboard-content h2 {
+  margin-top: 0;
+  color: #333; /* Başlık rengi */
+}
+
+/* Düğme Ayarları */
+.dashboard-content button {
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  margin: 5px; /* Butonlar arasında boşluk */
+}
+
+.dashboard-content button:hover {
+  background-color: #3700b3;
+}
