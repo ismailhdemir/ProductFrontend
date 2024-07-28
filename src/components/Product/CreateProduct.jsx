@@ -17,11 +17,11 @@ const CreateProduct = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ProductName: productName, // Güncellenmiş alan adı
-          Price: parseFloat(productPrice), // Güncellenmiş alan adı
-          StockQuantity: 0, // Varsayılan değer
-          CreationDate: new Date().toISOString(), // Varsayılan değer
-          ProductGroupId: 1 // Varsayılan değer (veya geçerli bir ID)
+          ProductName: productName,
+          Price: parseFloat(productPrice), 
+          StockQuantity: 0, 
+          CreationDate: new Date().toISOString(), 
+          ProductGroupId: 1 
         }),
       });
 
@@ -29,18 +29,18 @@ const CreateProduct = () => {
         const data = await response.json();
         console.log("Product created successfully", data);
         setSuccess("Product created successfully!");
-        setError(""); // Başarılı ise hata mesajını temizle
+        setError(""); 
       } else {
         console.error("HTTP Error:", response.status, response.statusText);
         const errorData = await response.json();
         console.error("Product creation failed", errorData);
         setError(`Failed to create product. HTTP Error: ${response.status} ${response.statusText}`);
-        setSuccess(""); // Başarısız ise başarılı mesajını temizle
+        setSuccess(""); 
       }
     } catch (error) {
       console.error("Error:", error);
       setError("An unexpected error occurred.");
-      setSuccess(""); // Başarısız ise başarılı mesajını temizle
+      setSuccess(""); 
     }
   };
 

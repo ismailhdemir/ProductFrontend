@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { createProductGroup } from '../../services/apiservice';
-import '../../styles.css';
+import { createProductGroup } from '../../services/ApiService';
+import '../../styles.css'; 
 
 const CreateProductGroup = () => {
     const [groupName, setGroupName] = useState('');
-    const [error, setError] = useState(''); // Hata durumunu yönetmek için
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -12,9 +13,11 @@ const CreateProductGroup = () => {
         try {
             await createProductGroup(newGroup);
             setGroupName('');
-            setError(''); // Başarılı ise hata mesajını temizle
+            setError('');
+            setSuccess('Product group created successfully!');
         } catch (error) {
-            setError(error.message); // Hata mesajını göster
+            setError(error.message);
+            setSuccess('');
             console.error("Error creating product group:", error);
         }
     };
@@ -30,7 +33,8 @@ const CreateProductGroup = () => {
                 required
             />
             <button type="submit">Create</button>
-            {error && <p className="error-message">{error}</p>} {/* Hata mesajı */}
+            {error && <p className="error-message">{error}</p>}
+            {success && <p className="success-message">{success}</p>}
         </form>
     );
 };

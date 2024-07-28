@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const DeleteProductGroup = () => {
     const [groupId, setGroupId] = useState('');

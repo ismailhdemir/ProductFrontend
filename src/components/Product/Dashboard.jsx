@@ -3,7 +3,7 @@ import CreateProduct from "./CreateProduct";
 import DeleteProduct from "./DeleteProduct";
 import UpdateProduct from "./UpdateProduct";
 import ListProducts from "./ListProducts";
-import "./Dashboard.css"; // CSS dosyasını import et
+import "./Dashboard.css"; 
 
 const Dashboard = () => {
   return (

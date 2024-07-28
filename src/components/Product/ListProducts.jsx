@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import apiService from '../../services/ApiService'; // Doğru dosya adı ve yolunu kullandığınızdan emin olun
+import apiService from '../../services/ApiService'; 
 
 const ListProducts = () => {
     const [products, setProducts] = useState([]);

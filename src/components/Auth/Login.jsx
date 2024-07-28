@@ -7,7 +7,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const navigate = useNavigate(); // React Router için navigate hook'u
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,19 +25,19 @@ const Login = () => {
         const data = await response.json();
         console.log("Login successful", data);
         setSuccess("Login successful!");
-        setError(""); // Başarılı ise hata mesajını temizle
-        // Başarılı giriş sonrası yönlendirme
-        navigate("/dashboard"); // Burada yönlendirilmek istenen sayfanın yolu
+        setError(""); 
+       
+        navigate("/dashboard"); 
       } else {
-        const errorData = await response.text(); // JSON yerine düz metin al
+        const errorData = await response.text(); 
         console.error("Login failed", errorData);
         setError("Login failed. Please check your credentials.");
-        setSuccess(""); // Başarısız ise başarılı mesajını temizle
+        setSuccess(""); 
       }
     } catch (error) {
       console.error("Error:", error);
       setError("An unexpected error occurred.");
-      setSuccess(""); // Başarılı ise başarılı mesajını temizle
+      setSuccess(""); 
     }
   };
 
