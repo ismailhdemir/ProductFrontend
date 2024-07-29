@@ -1,19 +1,31 @@
 import React, { useState } from 'react';
-
+import './DeleteProduct.css';
 const DeleteProduct = () => {
     const [productId, setProductId] = useState('');
+    const [message, setMessage] = useState('');
 
     const handleDelete = async () => {
         const token = localStorage.getItem('token');
+        console.log('Deleting product with ID:', productId);
+
         try {
-            await fetch(`https://localhost:7080/api/product/delete/${productId}`, {
+            const response = await fetch(`https://localhost:7080/api/Product/${productId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
             });
+
+            if (response.ok) {
+                setMessage("Product deleted successfully.");
+            } else if (response.status === 404) {
+                setMessage("Product not found.");
+            } else {
+                setMessage("Failed to delete product.");
+            }
         } catch (error) {
             console.error("Error deleting product:", error);
+            setMessage("An error occurred while deleting the product.");
         }
     };
 
@@ -27,6 +39,7 @@ const DeleteProduct = () => {
                 onChange={(e) => setProductId(e.target.value)}
             />
             <button onClick={handleDelete}>Delete</button>
+            {message && <p>{message}</p>}
         </div>
     );
 };
