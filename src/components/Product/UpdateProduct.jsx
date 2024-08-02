@@ -10,13 +10,13 @@ const UpdateProduct = () => {
     const handleUpdate = async () => {
         const token = localStorage.getItem('token');
         try {
-            const response = await fetch(`https://localhost:7080/api/product/update/${id}`, {
+            const response = await fetch(`https://localhost:7080/api/Product/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 },
-                body: JSON.stringify({ name: newName }),
+                body: JSON.stringify({ Id: id, ProductName: newName }),  // 'ProductName' kullanın
             });
 
             if (response.ok) {

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import "./style.css"; 
+import "./ListProduct.css";
+
 const ListProduct = () => {
     const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -14,6 +17,7 @@ const ListProduct = () => {
                 }
                 const data = await response.json();
                 setProducts(data);
+                setFilteredProducts(data);
                 setLoading(false);
             } catch (err) {
                 setError('An error occurred while fetching products');
@@ -24,12 +28,31 @@ const ListProduct = () => {
         fetchProducts();
     }, []);
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>{error}</div>;
+    useEffect(() => {
+    
+        const results = products.filter(product =>
+            product.productName.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        setFilteredProducts(results);
+    }, [searchQuery, products]);
+
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    if (loading) return <div className="loading">Loading...</div>;
+    if (error) return <div className="error">{error}</div>;
 
     return (
         <div className="product-list-container">
             <h2>Product List</h2>
+            <input
+                type="text"
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+                className="search-input"
+            />
             <table className="product-table">
                 <thead>
                     <tr>
@@ -39,7 +62,7 @@ const ListProduct = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {products.map(product => (
+                    {filteredProducts.map(product => (
                         <tr key={product.id}>
                             <td>{product.id}</td>
                             <td>{product.productName}</td>

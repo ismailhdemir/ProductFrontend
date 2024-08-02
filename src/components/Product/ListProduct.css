@@ -1,43 +1,62 @@
 .product-list-container {
-    padding: 30px;
-    background-color: #ffffff; 
-    border-radius: 10px; 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
-    max-width: 900px; 
-    margin: 0 auto;
-    margin-top: 30px; 
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 30px auto;
 }
 
 .product-list-container h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #444; 
-    font-family: 'Arial', sans-serif; 
-    font-size: 28px; 
+  text-align: center;
+  margin-bottom: 25px;
+  color: #444;
+  font-family: 'Arial', sans-serif;
+  font-size: 28px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 .product-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 25px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
 }
 
 .product-table th, .product-table td {
-    padding: 15px;
-    border: 1px solid #ccc; 
-    text-align: left;
+  padding: 15px;
+  border: 1px solid #ccc;
+  text-align: left;
 }
 
 .product-table th {
-    background-color: #007BFF; 
-    color: #ffffff; 
-    font-weight: bold;
+  background-color: #575757;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 .product-table tr:nth-child(even) {
-    background-color: #f2f2f2; 
+  background-color: #f2f2f2;
 }
 
 .product-table tr:hover {
-    background-color: #f1f1f1; 
+  background-color: #f1f1f1;
+}
+
+.loading, .error {
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  padding: 20px;
+}
+
+.error {
+  color: #d9534f;
 }

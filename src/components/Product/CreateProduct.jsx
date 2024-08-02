@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./style.css";
+import "./CreateProduct.css";
 
 const CreateProduct = () => {
   const [productName, setProductName] = useState("");
@@ -10,38 +10,37 @@ const CreateProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch("https://localhost:7080/api/Product", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ProductName: productName,
-          Price: parseFloat(productPrice), 
-          StockQuantity: 0, 
-          CreationDate: new Date().toISOString(), 
-          ProductGroupId: 1 
-        }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Product created successfully", data);
-        setSuccess("Product created successfully!");
-        setError(""); 
-      } else {
-        console.error("HTTP Error:", response.status, response.statusText);
-        const errorData = await response.json();
-        console.error("Product creation failed", errorData);
-        setError(`Failed to create product. HTTP Error: ${response.status} ${response.statusText}`);
-        setSuccess(""); 
+    fetch("https://localhost:7080/api/Product", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ProductName: productName,
+        Price: parseFloat(productPrice),
+        StockQuantity: 0,
+        CreationDate: new Date().toISOString(),
+        ProductGroupId: 1
+      }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        return response.json().then(errorData => {
+          throw new Error(`HTTP Error: ${response.status} ${response.statusText}. ${errorData.message}`);
+        });
       }
-    } catch (error) {
+      return response.json();
+    })
+    .then(data => {
+      console.log("Product created successfully", data);
+      setSuccess("Product created successfully!");
+      setError(""); 
+    })
+    .catch(error => {
       console.error("Error:", error);
-      setError("An unexpected error occurred.");
+      setError(`Failed to create product. ${error.message}`);
       setSuccess(""); 
-    }
+    });
   };
 
   return (

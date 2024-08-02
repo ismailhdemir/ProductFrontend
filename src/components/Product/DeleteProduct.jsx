@@ -1,5 +1,7 @@
+// src/Components/Product/DeleteProduct.jsx
 import React, { useState } from 'react';
-import './DeleteProduct.css';
+import './DeleteProduct.css'; // CSS dosyasının doğru olduğundan emin olun
+
 const DeleteProduct = () => {
     const [productId, setProductId] = useState('');
     const [message, setMessage] = useState('');
@@ -30,7 +32,7 @@ const DeleteProduct = () => {
     };
 
     return (
-        <div>
+        <div className="delete-product-container">
             <h2>Delete Product</h2>
             <input
                 type="text"
